@@ -1,0 +1,36 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Weather
+    link(rel='stylesheet', href='style.css')
+    link(rel='preconnect', href='https://fonts.googleapis.com')
+    link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Dongle&family=Hind+Siliguri:wght@300&family=Kaushan+Script&family=Mochiy+Pop+P+One&family=Open+Sans:wght@300;400&display=swap', rel='stylesheet')
+    script(src='https://kit.fontawesome.com/ac5bf9eb63.js', crossorigin='anonymous')
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    style 
+     include assets/css/style.css
+  body
+    video#videoBg(autoplay='', muted='', loop='')
+      source#videoSource(src='', type='video/mp4')
+    .center
+      .content
+        .searchBox
+          form(action="/get-weather" method='Get')
+            i.fas.fa-search
+            input#search.search(type='text' autocomplete='off' placeholder='Search Your City' name='city') 
+            input(type="submit" value="")
+        .weatherBox
+          .wIcon
+          h1#degree #{weather.main.temp} &deg;C
+          h2#climate #{weather.weather[0].main}
+          h4#dateTime
+            | 07:30 PM Friday
+            br
+            | 5-Feb-2022
+          h3#location #{weather.name}, #{weather.sys.country}
+  script
+    include assets/script/script.js
