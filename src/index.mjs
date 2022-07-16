@@ -4,6 +4,7 @@ import requests from 'requests';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import serveFavicon from 'serve-favicon';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -18,6 +19,7 @@ const videoBgs = path.join(__dirname, "../templates/views/Weather Conditions");
 
 
 app.use(express.static(videoBgs));
+app.use(serveFavicon(path.join(__dirname, "../templates/views", "favicon.ico")));
 app.set('view engine', 'pug');
 app.set('views', viewsPath);
 
